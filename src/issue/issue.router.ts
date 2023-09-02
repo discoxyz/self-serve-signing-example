@@ -25,13 +25,18 @@ export const createRouter = express.Router();
 
 // POST items
 createRouter.post("/", async (req: Request, res: Response) => {
+  console.log("BEGIN")
   try {
     const data: CreateVC = req.body;
-    if (!data.schema || !data.credSubject || !data.recipient) res.status(400).send({message: 'bad data'})
+    if (!data.schema || !data.credSubject || !data.recipient) {
+      console.error('BAD REQUEST')
+      res.status(400).send({message: 'bad data'})}
     const newItem = await create(data);
+    console.log('CREATED')
     res.status(201).json(newItem);
     return
   } catch (e) {
+    console.error('Failed to create')
     res.status(500).send('Something went wrong');
   }
 });
