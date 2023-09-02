@@ -1,0 +1,36 @@
+{
+  "name": "issue-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --pretty --transpile-only src/index.ts"
+  },
+  "dependencies": {
+    "@sindresorhus/slugify": "^2.2.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "eip-712-types-generation": "^0.1.6",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "json-canonicalize": "^1.0.6",
+    "json-schema": "^0.4.0",
+    "lodash": "^4.17.21",
+    "node-fetch": "2.6.1",
+    "uuid": "^9.0.0",
+    "viem": "^1.9.5"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.17",
+    "@types/helmet": "^4.0.0",
+    "@types/json-schema": "^7.0.12",
+    "@types/lodash": "^4.14.197",
+    "@types/node": "^20.5.8",
+    "@types/node-fetch": "2.6.1",
+    "@types/uuid": "^9.0.3",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.2.2"
+  }
+}
