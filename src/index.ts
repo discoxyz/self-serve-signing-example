@@ -6,6 +6,8 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import { createRouter} from "./issue/issue.router";
+import { errorHandler } from "./middleware/error.middleware";
+import { notFoundHandler } from "./middleware/not-found.middleware";
 
 /**
  * App Variables
@@ -23,7 +25,13 @@ const app = express();
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+
 app.use("/api/create", createRouter);
+app.use(errorHandler);
+app.use(notFoundHandler);
+// app.get('*', function(req, res){
+//   res.status(404).send('Invalid route');
+// });
 
 /**
  * Server Activation

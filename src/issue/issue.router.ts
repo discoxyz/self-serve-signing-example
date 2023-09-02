@@ -17,6 +17,9 @@ export const createRouter = express.Router();
  */
 
 // GET items
+// createRouter.get("/", async(req: Request, res: Response) => {
+//   res.status(400).send('yo')
+// })
 
 // GET items/:id
 
@@ -24,6 +27,7 @@ export const createRouter = express.Router();
 createRouter.post("/", async (req: Request, res: Response) => {
   try {
     const data: CreateVC = req.body;
+    if (!data.schema || !data.credSubject || !data.recipient) res.status(400).send({message: 'bad data'})
     const newItem = await create(data);
     res.status(201).json(newItem);
     return
