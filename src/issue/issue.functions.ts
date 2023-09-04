@@ -78,7 +78,7 @@ export function buildVc(data: {
 
 export function getVcProof(address: Address) {
   return {
-    verificationMethod: `did:pkh:eip:155:1:${address}#controller`,
+    verificationMethod: `did:pkh:eip-155:1:${address}#controller`,
     created: new Date().toISOString(),
     proofPurpose: "assertionMethod",
     type: "EthereumEip712Signature2021",
