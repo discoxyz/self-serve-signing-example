@@ -5,45 +5,42 @@ These credentials are issued by a key which you set via a env variable.
 
 ## How it works
 
-Send a `POST` request to `https://YOUR_URL/api/create` with the correct body parameters, and receive a signed credential associated with the DID:PKH method.
+After setting up, send a `POST` request to `https://YOUR_URL/api/create` with the correct body parameters, and receive a signed credential associated with the DID:PKH method.
 
 ```ts
 type RequestBody = {
   credSubject: {
     id: string, // Always Required. Include the did: method e.g. did:ether:0x1234...
-    [key: any]: any // All other parameters for the given schema
+    [key: string]: any // All other parameters for the given schema
   };
   recipient: string; // The recipient ID including did method, e.g. did:ethr:0x1234...
   schema: JSONSchema7; // The full JSON schema file
 };
 
 const requestBody: RequestBody = {
-    credSubject: {
-      ...JSON.parse(drop.subjectData),
-      id: `did:ethr:${claimingAddress}`,
+    credSubject: {string
+      // Always include the recipient ID
+      id: `did:ethr:${RECIPIENT}`,
+            // Incldue your other propertiies
+      foo: 'bar',
     },
-    recipient: `did:ethr:${claimingAddress}`,
+    recipient: `did:ethr:${RECIPIENT}`,
     schema: schema,
   }
 
-// example request
-const result = await fetch(YOUR_ENDPOINT, {
+const endpoint = `${YOUR_ENDPOINT}/api/create`
+
+const result = await fetch(endpoint, {
   method: "POST",
   mode: "cors", // this cannot be 'no-cors'
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
   },
-  body: JSON.stringify({
-    credSubject: {
-      // Your schema properties
-      id: `did:ethr:${RECIPIENT}`,
-    },
-    recipient: `did:ethr:${recipientAddress}`,
-    schema: schema,
-  }:),
+  body: JSON.stringify(requestBody),
 });
-issue = await result.json();
+
+const issue = await result.json();
 
 // Returns VC or error
 console.log(issue);
