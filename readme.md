@@ -10,7 +10,7 @@ After setting up, send a `POST` request to `https://YOUR_URL/api/create` with th
 ```ts
 type RequestBody = {
   credSubject: {
-    id: string, // Always Required. Include the did: method e.g. did:ether:0x1234...
+    id: string, // Always Required. Include the did: method e.g. did:ethr:0x1234...
     [key: string]: any // All other parameters for the given schema
   };
   recipient: string; // The recipient ID including did method, e.g. did:ethr:0x1234...
@@ -18,7 +18,7 @@ type RequestBody = {
 };
 
 const requestBody: RequestBody = {
-    credSubject: {string
+    credSubject: {
       // Always include the recipient ID
       id: `did:ethr:${RECIPIENT}`,
             // Incldue your other propertiies
