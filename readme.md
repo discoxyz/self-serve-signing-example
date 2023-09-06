@@ -1,4 +1,4 @@
-# Programattic issuance API
+# Self-serve credential issuance API
 
 This is a node.js + express server which enables issuance of credentials.
 These credentials are issued by a key which you set via a env variable.
@@ -46,7 +46,7 @@ const issue = await result.json();
 console.log(issue);
 ```
 
-## `.env`
+## ⚙️ `.env`
 
 The `.env` file requires the following:
 ```
@@ -61,11 +61,11 @@ PORT=7001
 4. clone repo:  `git clone https://github.com/discoxyz/self-serve-signing-example.git`
 5. push to heroku: `git push heroku main`
 6. Set your vars:
-  - heroku config:set PKEY=YOUR_PRIVATE_KEY
-  - heroku config:set PORT=7001
+  - `heroku config:set PKEY=YOUR_PRIVATE_KEY`
+  - `heroku config:set PORT=7001`
 7. Grab the URL from heroku and add `/api/create`. That's the endpoint.
 
-## Considerations when using this
+## ⚠️ Considerations
 
 - The API is not gated in any way. Consider adding authentication depending on your use case, to ensure that your issued credentials are not polluted
 - Only `did:pkh` is supported. Using `did:ethr` would only involve changing the `did:pkh:eip-155:1` strings to `did:ethr`
